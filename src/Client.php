@@ -48,6 +48,14 @@
         function delete(){
             $GLOBALS['DB']->exec("DELETE FROM client where ID ={$this->getId()};");
         }
+        function update($new_name, $last_appointment, $next_appointment){
+            $GLOBALS['DB']->exec("UPDATE client SET
+                name = '$new_name',
+                last_appointment = '$last_appointment',
+                next_appointment ='$next_appointment'
+                WHERE id = {$this->getId()};");
+                $this->setName($new_name);
+        }
 
         static function getAll(){
             $returned_clients =$GLOBALS['DB']->query("SELECT * FROM client;");

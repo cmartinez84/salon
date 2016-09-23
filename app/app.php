@@ -8,6 +8,8 @@
     use Symfony\Component\Debug\Debug;
     Debug::enable();
 
+    use Symfony\Component\HttpFoundation\Request; and Request::enableHttpMethodParameterOverride()
+
     $app = new Silex\Application();
 
     $app['debug'] = true;
@@ -54,6 +56,13 @@
         $found_stylist = Stylist::find($id);
         $new_client = Client::find($client_id);
         $new_client->delete();
+        $found_clients =$found_stylist->getClients($id);
+        return $app['twig']->render('stylist.html.twig', array('stylist' => $found_stylist, 'clients' => $found_clients));
+    });
+    $app->post("/stylist/{id}/edit/{client_id}", function($id, $client_id) use ($app) {
+        $found_stylist = Stylist::find($id);
+        $new_client = new Client (null, $_POST['name'], $_POST['last_appointment'], $_POST['next_appointment'], $_POST['stylist_id']);
+        $new_client->save();
         $found_clients =$found_stylist->getClients($id);
         return $app['twig']->render('stylist.html.twig', array('stylist' => $found_stylist, 'clients' => $found_clients));
     });

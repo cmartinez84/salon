@@ -20,6 +20,7 @@ _This page will search for word frequency._
 |Enter Client information, including name, age, gender. clicking client name |"Remedios Varo", female, 25 |"Remedios Varo", female, 25 |"Remedios Varo", female, 25|
 |clicking client name from stylist page brings up full profile of client|"Remedios Varo"|Name: "Remedios Varo" Age: 25, etc|
 |clients have button to delete client|click "remove"| client is removed from database. neither client complier method will return client|
+|button to delete stylists| clicked| stylist deleted from database|
 
 
 ## Setup/Installation Requirements
