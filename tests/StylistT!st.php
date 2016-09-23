@@ -65,13 +65,25 @@
 
             $test_stylist2 = new Stylist (null, "bob", "11-22-3333", "burgers");
             $test_stylist2->save();
-
-
             $search_id = $test_stylist1->getId();
-            
+
             $result = Stylist::find($search_id);
 
             $this->assertEquals($test_stylist1, $result);
+        }
+        function test_findStylist_false(){
+            $test_stylist1 = new Stylist (null, "alexandra", "11-11-2011", "children");
+            $test_stylist1->save();
+
+            $test_stylist2 = new Stylist (null, "bob", "11-22-3333", "burgers");
+            $test_stylist2->save();
+            $search_id = $test_stylist2->getId();
+
+            if(Stylist::find($search_id) != $test_stylist1){
+                $result = false;
+            }
+
+            $this->assertEquals(false, $result);
         }
     }
 ?>
