@@ -59,5 +59,19 @@
             //Assert
             $this->assertEquals($test_stylist, $result[0]);
         }
+        function test_findStylist(){
+            $test_stylist1 = new Stylist (null, "alexandra", "11-11-2011", "children");
+            $test_stylist1->save();
+
+            $test_stylist2 = new Stylist (null, "bob", "11-22-3333", "burgers");
+            $test_stylist2->save();
+
+
+            $search_id = $test_stylist1->getId();
+            
+            $result = Stylist::find($search_id);
+
+            $this->assertEquals($test_stylist1, $result);
+        }
     }
 ?>

@@ -45,9 +45,17 @@
         // function getClients(){
         //
         // }
-        // static function deleteAll(){
-        //
-        // }
+        static function find($search_id){
+
+            $returned_stylists = Stylist::getAll();
+            foreach($returned_stylists as $stylist){
+                $stylist_id = $stylist->getId();
+                if($stylist_id == $search_id){
+                    $found_stylist = $stylist;
+                }
+            }
+            return $found_stylist;
+        }
         static function getAll(){
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylist");
             $stylists= array();
