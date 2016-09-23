@@ -9,6 +9,10 @@
             {% for client in clients %}
             <div class="stylist">
                 <h3>{{client.name}}</h3>
+                <form class="" action="/stylist/{{stylist.id}}/delete/{{client.id}}" method="post">
+                     <!-- <input name="_method" type="hidden" value="delete"> -->
+                    <button type="submit" name="button">Delete Client</button>
+                </form>
             </div>
             {% endfor %}
         {% endif %}
