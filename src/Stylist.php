@@ -34,31 +34,31 @@
         function setSpecialty($new_specialty){
             $this->specialty = $new_specialty;
         }
-        // function save(){
-        //     $GLOBALS['DB']->exec("INSERT INTO stylist (name, date_began, specialty) VALUES (
-        //         '{$this->name}',
-        //         '{$this->date_began}',
-        //         '{$this->specialty}';
-        //     )";
-        //     $this->id = $GLOBALES['DB']->lastInsertId();
-        // }
+        function save(){
+            $GLOBALS['DB']->exec("INSERT INTO stylist (name, date_began, specialty) VALUES (
+                '{$this->name}',
+                '{$this->date_began}',
+                '{$this->specialty}'
+            );");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
         // function getClients(){
         //
         // }
         // static function deleteAll(){
         //
-        // // }
-        // static function getAll(){
-        //     $returned_stylists = $GlOBALS['DB']->query("SELECT * FROM stylist");
-        //     $all_stylists= array();
-        //     foreach ($returned_stylists as $stylist) {
-        //         $id = $stylist['id'];
-        //         $name = $stylist['name'];
-        //         $date_began = $stylist['date_began'];
-        //         $specialty = $stylist['specialty'];
-        //         $new_stylist = new Stylist($id, $name, $date_began, $specialty);
-        //         array_push($all_stylists, $new_stylist);
-        //     }
         // }
+        static function getAll(){
+            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylist");
+            $all_stylists= array();
+            foreach ($returned_stylists as $stylist) {
+                $id = $stylist['id'];
+                $name = $stylist['name'];
+                $date_began = $stylist['date_began'];
+                $specialty = $stylist['specialty'];
+                $new_stylist = new Stylist($id, $name, $date_began, $specialty);
+                array_push($all_stylists, $new_stylist);
+            }
+        }
     }
  ?>
