@@ -8,20 +8,18 @@
         {% if clients is not empty%}
             {% for client in clients %}
             <div class="stylist">
-                <a href="/stylist/{{stylist.id}}"><h3>{{client.name}}</3></a>
-                <p>{{client.date_began}}</p>
-                <p>{{client.specialty}}</p>
+                <h3>{{client.name}}</h3>
             </div>
             {% endfor %}
         {% endif %}
-
-        <form class="" action="/stylist{{stylist.id}}" method="post">
+        <form class="" action="/stylist/{{stylist.id}}" method="post">
+            <input type="hidden" name="stylist_id" value={{stylist.id}}>
             <label for="">Enter Client</label>
             <input type="text" name="name" value="">
             <label for="">Last Appointment</label>
-            <input type="text" name="date_began" value="">
+            <input type="text" name="last_appointment" value="">
             <label for="">Next Appointment</label>
-            <input type="text" name="specialty" value="">
+            <input type="text" name="next_appointment" value="">
             <button type="submit" name="button">Submit</button>
         </form>
     </body>
