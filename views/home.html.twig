@@ -11,6 +11,9 @@
                 <a href="/stylist/{{stylist.id}}"><h3>{{stylist.name}}</3></a>
                 <p>{{stylist.date_began}}</p>
                 <p>{{stylist.specialty}}</p>
+                <form class="" action="/delete/{{stylist.id}}" method="post">
+                    <button type="submit" name="button">Delete Stylist</button>
+                </form>
             </div>
 
             {% endfor %}

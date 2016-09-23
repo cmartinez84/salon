@@ -29,10 +29,10 @@
         $new_Stylist->save();
       return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
     });
-    
+
     $app->post("/delete/{id}", function($id) use ($app) {
         $found_stylist = Stylist::find($id);
-        $new_Stylist->delete();
+        $found_stylist->delete();
       return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
     });
 
