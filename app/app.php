@@ -44,6 +44,7 @@
         $found_clients  = $found_stylist->getClients($id);
         return $app['twig']->render('stylist.html.twig', array('stylist' => $found_stylist, 'clients' => $found_clients));
     });
+    
 
     return $app;
 ?>

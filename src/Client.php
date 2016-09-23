@@ -45,6 +45,10 @@
             );");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
+        function delete(){
+            $GLOBALS['DB']->exec("DELETE FROM client where ID ={$this->getId()};");
+        }
+
         static function getAll(){
             $returned_clients =$GLOBALS['DB']->query("SELECT * FROM client;");
             $all_clients = array();
@@ -72,6 +76,8 @@
             }
             return $client;
         }
+
+
     }
 
  ?>
