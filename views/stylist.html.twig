@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body><h1>All Clients for {{stylist.name}}</h1>
+        {% if clients is not empty%}
+            {% for client in clients %}
+            <div class="stylist">
+                <a href="/stylist/{{stylist.id}}"><h3>{{client.name}}</3></a>
+                <p>{{client.date_began}}</p>
+                <p>{{client.specialty}}</p>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        <form class="" action="/stylist{{stylist.id}}" method="post">
+            <label for="">Enter Client</label>
+            <input type="text" name="name" value="">
+            <label for="">Last Appointment</label>
+            <input type="text" name="date_began" value="">
+            <label for="">Next Appointment</label>
+            <input type="text" name="specialty" value="">
+            <button type="submit" name="button">Submit</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        {% if stylists is not empty%}
+            {% for stylist in stylists %}
+            <div class="stylist">
+                <a href="/stylist/{{stylist.id}}"><h3>{{stylist.name}}</3></a>
+                <p>{{stylist.date_began}}</p>
+                <p>{{stylist.specialty}}</p>
+            </div>
+
+            {% endfor %}
+        {% endif %}
+        some filler text
+        <form class="" action="/" method="post">
+            <label for="">Enter A New Stylist</label>
+            <input type="text" name="name" value="">
+            <label for="">Date Began</label>
+            <input type="text" name="date_began" value="">
+            <label for="">Specialty</label>
+            <input type="text" name="specialty" value="">
+            <button type="submit" name="button">Submit</button>
+        </form>
+    </body>
+</html>
