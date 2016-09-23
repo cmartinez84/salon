@@ -50,15 +50,19 @@
         // }
         static function getAll(){
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylist");
-            $all_stylists= array();
+            $stylists= array();
             foreach ($returned_stylists as $stylist) {
                 $id = $stylist['id'];
                 $name = $stylist['name'];
                 $date_began = $stylist['date_began'];
                 $specialty = $stylist['specialty'];
                 $new_stylist = new Stylist($id, $name, $date_began, $specialty);
-                array_push($all_stylists, $new_stylist);
+                array_push($stylists, $new_stylist);
             }
+            return $stylists;
+        }
+        static function deleteAll(){
+            $GLOBALS['DB']->exec("DELETE FROM stylist;");
         }
     }
  ?>
