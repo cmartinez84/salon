@@ -24,10 +24,15 @@
       return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
     });
 
-
     $app->post("/", function() use ($app) {
         $new_Stylist = new Stylist($_POST['name'], $_POST['date_began'], $_POST['specialty']);
         $new_Stylist->save();
+      return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
+    });
+    
+    $app->post("/delete/{id}", function($id) use ($app) {
+        $found_stylist = Stylist::find($id);
+        $new_Stylist->delete();
       return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
     });
 

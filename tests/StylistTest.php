@@ -19,6 +19,7 @@
     {
         protected function teardown(){
             Stylist::deleteAll();
+            Client::deleteAll();
         }
 
         function test_getName()
@@ -99,6 +100,17 @@
             $result = $found_clients[0];
 
             $this->assertEquals($test_client, $result);
+        }
+        function test_delete(){
+            $test_stylist1 = new Stylist(null, "alexandra", "11-11-2011", "children");
+            $test_stylist1->save();
+            $test_stylist2 = new Stylist(null, "bob", "11-22-3333", "burgers");
+            $test_stylist2->save();
+
+            $test_stylist1->delete();
+            $result = Stylist::getAll();
+
+            $this->assertEquals([$test_stylist2], $result);
         }
     }
 ?>

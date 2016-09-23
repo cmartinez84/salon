@@ -42,6 +42,9 @@
             );");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
+        function delete(){
+            $GLOBALS['DB']->exec("DELETE FROM stylist WHERE id={$this->getid()};");
+        }
         function getClients($search_id){
             $all_clients = Client::getAll();
             $matched_clients = array();
@@ -80,5 +83,6 @@
         static function deleteAll(){
             $GLOBALS['DB']->exec("DELETE FROM stylist;");
         }
+
     }
  ?>
