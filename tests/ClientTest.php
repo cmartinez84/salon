@@ -53,5 +53,16 @@
 
             $this->assertEquals($test_client, $result);
         }
+        function test_find(){
+            $test_client = new Client(null, "bob", "1-11-2111", "2-22-2122");
+            $test_client2 = new Client(null, "bob", "1-11-2111", "2-22-2122");
+            $test_client->save();
+            $test_client2->save();
+
+            $result = Client::find($search_id);
+
+            $this->assertEquals($test_client2, $result);
+
+        }
     }
 ?>
