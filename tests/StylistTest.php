@@ -6,6 +6,8 @@
     */
 
     require_once "src/Stylist.php";
+    require_once "src/Client.php";
+
 
     $server = 'mysql:host=localhost:8889;dbname=stylists_test';
     $username = 'root';
@@ -84,6 +86,19 @@
             }
 
             $this->assertEquals(false, $result);
+        }
+        function test_getClients(){
+            $test_stylist1 = new Stylist(333, "alexandra", "11-11-2011", "children");
+            $test_stylist1->save();
+            $test_stylist2 = new Stylist(null, "bob", "11-22-3333", "burgers");
+            $test_stylist2->save();
+            $test_client = new Client(null, "bob", "1-11-2111", "2-22-2122", 333);
+            $test_client->save();
+
+            $found_clients = Stylist::getClients(333);
+            $result = $found_clients[0];
+
+            $this->assertEquals($test_client, $result);
         }
     }
 ?>

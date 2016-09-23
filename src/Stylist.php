@@ -42,9 +42,17 @@
             );");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
-        // function getClients(){
-        //
-        // }
+        function getClients($search_id){
+            $all_clients = Client::getAll();
+            $matched_clients = array();
+            foreach($all_clients as $client){
+                if($client->getStylistId() == $search_id){
+                    array_push($matched_clients, $client);
+                }
+            }
+            return $matched_clients;
+        }
+
         static function find($search_id){
 
             $returned_stylists = Stylist::getAll();
