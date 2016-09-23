@@ -23,11 +23,17 @@
         function setName($new_name){
             $this->name = $new_name;
         }
-        function getNext(){
-            return $this->name;
+        function getNext_appointment(){
+            return $this->next_appointment;
         }
-        function setNext($new_name){
-            $this->name = $new_name;
+        function setLast_appointment($last_appointment){
+            $this->last_appointment = $new_last_appointment;
+        }
+        function getLast_appointment(){
+            return $this->next_appointment;
+        }
+        function setNext_appointment($next_appointment){
+            $this->next_appointment = $new_next_appointment;
         }
         function getStylistId()
         {
