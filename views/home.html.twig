@@ -12,6 +12,8 @@
                 <p>{{stylist.date_began}}</p>
                 <p>{{stylist.specialty}}</p>
                 <form class="" action="/delete/{{stylist.id}}" method="post">
+                    <input name="_method" type="hidden" value="delete">
+
                     <button type="submit" name="button">Delete Stylist</button>
                 </form>
                 <p>Edit This Stylists Information:</p>
