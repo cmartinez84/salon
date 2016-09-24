@@ -59,6 +59,7 @@
             $test_client2 = new Client(null, "bob", "1-11-2111", "2-22-2122", 10);
             $test_client->save();
             $test_client2->save();
+            $search_id = $test_client2->getId();
 
             $result = Client::find($search_id);
 

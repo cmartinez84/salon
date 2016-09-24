@@ -83,6 +83,13 @@
         static function deleteAll(){
             $GLOBALS['DB']->exec("DELETE FROM stylist;");
         }
+        function update($name, $date_began, $specialty){
+            $GLOBALS['DB']->exec("UPDATE stylist SET
+                name ='$name',
+                date_began = '$date_began',
+                specialty = '$specialty'
+                WHERE id ='{$this->getId()}';");
+        }
 
     }
- ?>
+?>

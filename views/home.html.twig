@@ -14,11 +14,24 @@
                 <form class="" action="/delete/{{stylist.id}}" method="post">
                     <button type="submit" name="button">Delete Stylist</button>
                 </form>
+                <p>Edit This Stylists Information:</p>
+                <form class="" action="/{{stylist.id}}/edit/" method="post">
+                    <p>Edit Stylist Info:</p>
+                    <input name="person" type="hidden" value="{{stylist.id}}">
+                    <input name="_method" type="hidden" value="patch">
+                    <input type="hidden" name="stylist_id" value={{stylist.id}}>
+                    <label for="">Change Stylist Name:</label>
+                    <input type="text" name="name" value="{{stylist.name}}">
+                    <label for="">Change Date of Beginnig of Employment Date:</label>
+                    <input type="text" name="date_began" value="{{stylist.date_began}}">
+                    <label for="">Change Next Appointment:</label>
+                    <input type="text" name="specialty" value="{{stylist.specialty}}">
+                    <button type="submit" name="button">Submit</button>
+                </form>
             </div>
 
             {% endfor %}
         {% endif %}
-        some filler text
         <form class="" action="/" method="post">
             <label for="">Enter A New Stylist</label>
             <input type="text" name="name" value="">

@@ -112,5 +112,18 @@
 
             $this->assertEquals([$test_stylist2], $result);
         }
+        function test_update(){
+            $test_stylist = new Stylist(null, "alexandra", "11-11-2011", "children");
+            $test_stylist->save();
+            $test_stylist_id = $test_stylist->getId();
+            $test_name = "new";
+
+            $test_stylist->update($test_name, "stuff", "here");
+            $found_test_stylist = Stylist::find($test_stylist_id);
+            $result = $found_test_stylist->getName();
+
+
+            $this->assertEquals("new", $result);
+        }
     }
 ?>

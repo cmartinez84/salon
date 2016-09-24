@@ -32,6 +32,12 @@
       return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
     });
 
+    $app->patch("/{id}/edit", function($id) use ($app) {
+        $found_stylist= Stylist::find($id);
+        $found_stylist->update($_POST['id'], $_POST['name'], $_POST['date_began'], $_POST['specialty']);
+      return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
     $app->post("/delete/{id}", function($id) use ($app) {
         $found_stylist = Stylist::find($id);
         $found_stylist->delete();
@@ -62,15 +68,13 @@
 
     $app->patch("/stylist/{id}/edit/", function($id) use ($app) {
         $found_stylist = Stylist::find($id);
-
         $stuff = $_POST['person'];
-
-        $new_client = Client::find($stuff);
-        var_dump($new_client);
-        $new_client->update($_POST['name'],$_POST['last_appointment'], $_POST['next_appointment']);
+        $found_client = Client::find($stuff);
+        $found_client->update($_POST['name'],$_POST['last_appointment'], $_POST['next_appointment']);
         $found_clients =$found_stylist->getClients($id);
         return $app['twig']->render('stylist.html.twig', array('stylist' => $found_stylist, 'clients' => $found_clients));
     });
+
 
 
 
