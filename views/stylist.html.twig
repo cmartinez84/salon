@@ -12,7 +12,7 @@
                 <form class="" action="/stylist/{{stylist.id}}/delete/{{client.id}}" method="post">
                     <button type="submit" name="button">Delete Client</button>
                 </form>
-                <form class="" action="/stylist/{{stylist.id}}/edit/{{client.id}}" method="post">
+                <form class="" action="/stylist/{{stylist.id}}/edit/" method="post">
                     <p>Edit Client Info:</p>
                     <input name="person" type="hidden" value="{{client.id}}">
                     <input name="_method" type="hidden" value="patch">

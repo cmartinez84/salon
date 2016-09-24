@@ -60,11 +60,13 @@
         return $app['twig']->render('stylist.html.twig', array('stylist' => $found_stylist, 'clients' => $found_clients));
     });
 
-    $app->patch("/stylist/{id}/edit/{client_id}", function($id, $client_id) use ($app) {
+    $app->patch("/stylist/{id}/edit/", function($id) use ($app) {
         $found_stylist = Stylist::find($id);
+
         $stuff = $_POST['person'];
-        $new_client = Client::find($client_id);
-        var_dump($client_id);
+
+        $new_client = Client::find($stuff);
+        var_dump($new_client);
         $new_client->update($_POST['name'],$_POST['last_appointment'], $_POST['next_appointment']);
         $found_clients =$found_stylist->getClients($id);
         return $app['twig']->render('stylist.html.twig', array('stylist' => $found_stylist, 'clients' => $found_clients));
