@@ -34,7 +34,7 @@
 
     $app->patch("/{id}/edit", function($id) use ($app) {
         $found_stylist= Stylist::find($id);
-        $found_stylist->update($_POST['id'], $_POST['name'], $_POST['date_began'], $_POST['specialty']);
+        $found_stylist->update($_POST['name'], $_POST['date_began'], $_POST['specialty']);
       return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
     });
 

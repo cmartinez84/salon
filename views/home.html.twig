@@ -15,7 +15,7 @@
                     <button type="submit" name="button">Delete Stylist</button>
                 </form>
                 <p>Edit This Stylists Information:</p>
-                <form class="" action="/{{stylist.id}}/edit/" method="post">
+                <form class="" action="/{{stylist.id}}/edit" method="post">
                     <p>Edit Stylist Info:</p>
                     <input name="person" type="hidden" value="{{stylist.id}}">
                     <input name="_method" type="hidden" value="patch">
