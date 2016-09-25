@@ -1,45 +1,115 @@
+
+
+
+
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body><h1>All Clients for {{stylist.name}}</h1>
-        {% if clients is not empty%}
-            {% for client in clients %}
-            <div class="stylist">
-                <h3>{{client.name}}</h3>
-                <form class="" action="/stylist/{{stylist.id}}/delete/{{client.id}}" method="post">
+  <head>
+    <meta charset="utf-8">
+    <title>Turnt Up</title>
+  </head>
+  <body>
+
+    <!-- <h1>turnt up</h1> -->
+    <div class="container">
+        <div class="stylistColumn col-sm-4">
+            <h1>Our Stylists</h1>
+            {% if stylists is not empty%}
+            <div id ="stylistList" class="col">
+              {% for stylist in stylists %}
+              <div class="stylist">
+                <button class="form-control accordian">{{stylist.name}}<span class="glyphicon glyphicon-triangle-bottom"></span></button>
+                <div class="panel">
+                  <p>
+                      <strong></strong>
+                      <a href="/stylist/{{stylist.id}}">
+                          <button  class=" form-control btn btn-info" type="button" name="button">Clients <span class=" glyphicon glyphicon-triangle-right"></span></button>
+
+                      </a>
+                  </p>
+                  <p><strong>Began With Company:</strong> {{stylist.date_began}}</p>
+                  <p><strong>Specialty:</strong> {{stylist.specialty}}</p>
+                  <form class="delete" action="/delete/{{stylist.id}}" method="post">
                     <input name="_method" type="hidden" value="delete">
-
-                    <button type="submit" name="button">Delete Client</button>
-                </form>
-                <form class="" action="/stylist/{{stylist.id}}/edit/" method="post">
-                    <p>Edit Client Info:</p>
-                    <input name="person" type="hidden" value="{{client.id}}">
-                    <input name="_method" type="hidden" value="patch">
-                    <input type="hidden" name="stylist_id" value={{stylist.id}}>
-                    <label for="">Change Client Name:</label>
-                    <input type="text" name="name" value="{{client.name}}">
-                    <label for="">Change Last Appointment:</label>
-                    <input type="text" name="last_appointment" value="{{client.last_appointment}}">
-                    <label for="">Change Next Appointment:</label>
-                    <input type="text" name="next_appointment" value="{{client.next_appointment}}">
-                    <button type="submit" name="button">Submit</button>
-                </form>
-
+                    <button class="btn btn-danger form-control delete" type="submit" name="button">Delete </button>
+                  </form>
+                  <button class = "form-control accordian" type="button" name="button">Edit<span class="glyphicon glyphicon-triangle-bottom"></span></button>
+                  <div class="panel">
+                    <form class="" action="/{{stylist.id}}/edit" method="post">
+                      <input name="person" type="hidden" value="{{stylist.id}}">
+                      <input name="_method" type="hidden" value="patch">
+                      <input class="form-control" type="hidden" name="stylist_id" value={{stylist.id}}>
+                      <div><label for="">Name</label>
+                      <input class="form-control" type="text" name="name" value="{{stylist.name}}"></div>
+                      <div><label for="">Began:</label>
+                      <input class="form-control" type="text" name="date_began" value="{{stylist.date_began}}"></div>
+                      <div><label for="">Specialty:</label>
+                      <input class="form-control" type="text" name="specialty" value="{{stylist.specialty}}"></div>
+                      <button class="form-control btn btn-success" type="submit" name="button">Submit</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
             </div>
-            {% endfor %}
-        {% endif %}
-        <form class="" action="/stylist/{{stylist.id}}" method="post">
-            <input type="hidden" name="stylist_id" value={{stylist.id}}>
-            <label for="">Enter Client</label>
-            <input type="text" name="name" value="">
-            <label for="">Last Appointment</label>
-            <input type="text" name="last_appointment" value="">
-            <label for="">Next Appointment</label>
-            <input type="text" name="next_appointment" value="">
-            <button type="submit" name="button">Submit</button>
-        </form>
-    </body>
+            {% endif %}
+
+        </div>
+        <div class="col-sm-4">
+            <h1>Clients of {{stylist.name}}:</h1>
+            {% if clients is not empty%}
+                {% for client in clients %}
+                <div class="stylist">
+                    <button class="accordian form-control">{{client.name}} <span class=" glyphicon glyphicon-triangle-bottom"></span></button>
+                    <div class="panel">
+                        <form class="" action="/stylist/{{stylist.id}}/delete/{{client.id}}" method="post">
+                            <p><strong>Last Appointment:</strong> {{client.next_appointment}}   </p>
+                            <p><strong>Next Appointment:</strong> {{client.next_appointment}}   </p>
+                            <input name="_method" type="hidden" value="delete">
+                            <button class="btn btn-danger form-control" type="submit" name="button">Delete Client</button>
+                        </form>
+
+                    <button class="btn accordian form-control" type="button" name="button">Edit <span class=" glyphicon glyphicon-triangle-bottom"></span></button>
+                    <div class="panel">
+                        <form class="" action="/stylist/{{stylist.id}}/edit/" method="post">
+                            <p>Edit Client Info:</p>
+                            <input name="person" type="hidden" value="{{client.id}}">
+                            <input name="_method" type="hidden" value="patch">
+                            <input type="hidden" name="stylist_id" value={{stylist.id}}>
+                            <label for="">Change Client Name:</label>
+                            <input type="text" name="name" value="{{client.name}}">
+                            <label for="">Change Last Appointment:</label>
+                            <input type="text" name="last_appointment" value="{{client.last_appointment}}">
+                            <label for="">Change Next Appointment:</label>
+                            <input type="text" name="next_appointment" value="{{client.next_appointment}}">
+                            <button class="btn btn-submit" type="submit" name="button">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+
+                </div>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+
+        <div class="newStylistColumn col-sm-4">
+            <h1>Add New Client</h1>
+            <form class="" action="/stylist/{{stylist.id}}" method="post">
+                <input type="hidden" name="stylist_id" value={{stylist.id}}>
+                <div class="form-group"><label for="">Enter Client</label>
+                <input class="form-control" type="text" name="name" value=""></input>
+                <div class="form-group"><label for="">Last Appointment</label>
+                <input class="form-control" type="text" name="last_appointment" value=""></input>
+                <div class="form-group"><label for="">Next Appointment</label>
+                <input class="form-control" type="text" name="next_appointment" value=""></input>
+                <button type="submit" name="button">Submit</button>
+            </form>
+        </div>
+
+
+    </div>
+  </body>
 </html>
