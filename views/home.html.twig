@@ -1,85 +1,116 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Turnt Up</title>
-    </head>
-    <body>
-        <!-- begin navbar -->
-        <div class="navbar navbar-default navbar-fixed-top">
-       <!-- header column1 -->
-       <div class= "container">
-         <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-collapse">
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-         </button>
-<!-- collapsable-->
-
-       <div class="collapse navbar-collapse">
-
-         <ul class= "#nav nav navbar-nav navbar-left">
-           <li><a href="#headername">Home</a></li>
-           <li><a href="#aboutme">Staff</a></li>
-           <li><a href="#projects">Location</a></li>
-           <li><a href="#education">Our Staff</a></li>
-           <li><a href="#experience">Store</a></li>
-           <li><a href="#moreaboutme">Customer Feedback</a></li>
-           <li><a href="mailto:cardamomclouds@yahoo.com">Mail</a></li>
-         </ul>
-       <!-- header column 2, social media icons -->
-         <ul class="nav navbar-nav navbar-right">
-           <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i>
-           </a></li>
-           <li><a href="https://github.com/cmartinez84?tab=repositories"><i class="fa fa-github" aria-hidden="true"></i>
-           </a></li>
-           <li><a href="mailto:cardamomclouds@yahoo.com"><i class="fa fa-envelope" aria-hidden="true"></i>
-           </a>
-           </li>
-           <li><a href="https://www.flickr.com/photos/135784540@N03/albums/"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
-         </ul>
-       </div>
-     </div>
-</div>
+  <head>
+    <meta charset="utf-8">
+    <title>Turnt Up</title>
+  </head>
+  <body>
+    <!-- begin navbar -->
+    <!-- <div class="navbar navbar-default navbar-fixed-top">
+      <!-- header column1 -->
+      <div class= "container">
+        <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <!-- collapsable-->
+        <div class="collapse navbar-collapse">
+          <ul class= "#nav nav navbar-nav navbar-left">
+            <li><a href="#headername">Home</a></li>
+            <li><a href="#aboutme">Staff</a></li>
+            <li><a href="#projects">Location</a></li>
+            <li><a href="#education">Our Staff</a></li>
+            <li><a href="#experience">Store</a></li>
+            <li><a href="#moreaboutme">Customer Feedback</a></li>
+            <li><a href="mailto:cardamomclouds@yahoo.com">Mail</a></li>
+          </ul>
+          <!-- header column 2, social media icons -->
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li><a href="https://github.com/cmartinez84?tab=repositories"><i class="fa fa-github" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li><a href="mailto:cardamomclouds@yahoo.com"><i class="fa fa-envelope" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li><a href="https://www.flickr.com/photos/135784540@N03/albums/"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div> -->
     <!-- end navbar -->
-        <h1>turnt up</h1>
-        {% if stylists is not empty%}
-            {% for stylist in stylists %}
-            <div class="stylist">
-                <a href="/stylist/{{stylist.id}}"><h3>{{stylist.name}}</3></a>
-                <p>{{stylist.date_began}}</p>
-                <p>{{stylist.specialty}}</p>
-                <form class="" action="/delete/{{stylist.id}}" method="post">
+    <!-- <h1>turnt up</h1> -->
+    <div class="container">
+        <div class="stylistColumn col-sm-4">
+            <h1>Our Stylists</h1>
+            {% if stylists is not empty%}
+            <div id ="stylistList" class="col">
+              {% for stylist in stylists %}
+              <div class="stylist">
+                <button class="form-control accordian">{{stylist.name}}<span class="glyphicon glyphicon-triangle-bottom"></span></button>
+                <div class="panel">
+                  <p>
+                      <strong></strong>
+                      <a href="/stylist/{{stylist.id}}">
+                          <button  class=" form-control btn btn-info" type="button" name="button">Clients <span class=" glyphicon glyphicon-triangle-right"></span></button>
+
+                      </a>
+                  </p>
+                  <p><strong>Began With Company:</strong> {{stylist.date_began}}</p>
+                  <p><strong>Specialty:</strong> {{stylist.specialty}}</p>
+                  <form class="delete" action="/delete/{{stylist.id}}" method="post">
                     <input name="_method" type="hidden" value="delete">
-
-                    <button type="submit" name="button">Delete Stylist</button>
-                </form>
-                <p>Edit This Stylists Information:</p>
-                <form class="" action="/{{stylist.id}}/edit" method="post">
-                    <p>Edit Stylist Info:</p>
-                    <input name="person" type="hidden" value="{{stylist.id}}">
-                    <input name="_method" type="hidden" value="patch">
-                    <input type="hidden" name="stylist_id" value={{stylist.id}}>
-                    <label for="">Change Stylist Name:</label>
-                    <input type="text" name="name" value="{{stylist.name}}">
-                    <label for="">Change Date of Beginnig of Employment Date:</label>
-                    <input type="text" name="date_began" value="{{stylist.date_began}}">
-                    <label for="">Change Next Appointment:</label>
-                    <input type="text" name="specialty" value="{{stylist.specialty}}">
-                    <button type="submit" name="button">Submit</button>
-                </form>
+                    <button class="btn btn-danger form-control delete" type="submit" name="button">Delete </button>
+                  </form>
+                  <button class = "form-control accordian" type="button" name="button">Edit<span class="glyphicon glyphicon-triangle-bottom"></span></button>
+                  <div class="panel">
+                    <form class="" action="/{{stylist.id}}/edit" method="post">
+                      <input name="person" type="hidden" value="{{stylist.id}}">
+                      <input name="_method" type="hidden" value="patch">
+                      <input class="form-control" type="hidden" name="stylist_id" value={{stylist.id}}>
+                      <div><label for="">Name</label>
+                      <input class="form-control" type="text" name="name" value="{{stylist.name}}"></div>
+                      <div><label for="">Began:</label>
+                      <input class="form-control" type="text" name="date_began" value="{{stylist.date_began}}"></div>
+                      <div><label for="">Specialty:</label>
+                      <input class="form-control" type="text" name="specialty" value="{{stylist.specialty}}"></div>
+                      <button class="form-control btn btn-success" type="submit" name="button">Submit</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
             </div>
+            {% endif %}
 
-            {% endfor %}
-        {% endif %}
-        <form class="" action="/" method="post">
-            <label for="">Enter A New Stylist</label>
-            <input type="text" name="name" value="">
-            <label for="">Date Began</label>
-            <input type="text" name="date_began" value="">
-            <label for="">Specialty</label>
-            <input type="text" name="specialty" value="">
-            <button type="submit" name="button">Submit</button>
-        </form>
-    </body>
+        </div>
+        <!-- <div class="col-sm-4">
+        </div> -->
+
+        <div class="newStylistColumn col-sm-4">
+            <h1>New Stylist</h1>
+            <form class="" action="/" method="post">
+                <div class="form-group">
+                    <label for="">Enter A New Stylist:</label>
+                    <input class="form-control" type="text" name="name" value="">
+                </div>
+                <div class="form-group">
+                    <label for="">Date Began:</label>
+                    <input class="form-control" type="text" name="date_began" value="">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Specialty:</label>
+                    <input class="form-control" type="text" name="specialty" value="">
+                </div>
+
+              <button class="btn btn-success form-control" type="submit" name="button">Submit</button>
+            </form>
+        </div>
+
+    </div>
+  </body>
 </html>

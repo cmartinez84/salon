@@ -7,7 +7,7 @@
         private $date_began;
         private $specialty;
 
-        function __construct($id=null, $name, $date_began, $specialty ="none"){
+        function __construct($id=null, $name, $date_began, $specialty="none"){
             $this->id = $id;
             $this->name = $name;
             $this->date_began = $date_began;
