@@ -10,8 +10,7 @@
     <title>Turnt Up</title>
   </head>
   <body>
-
-    <!-- <h1>turnt up</h1> -->
+<a href="/"><span class ="home-button glyphicon glyphicon-home"></span></a>"
     <div class="container">
         <div class="stylistColumn col-sm-4">
             <h1>Our Stylists</h1>
@@ -19,7 +18,7 @@
             <div id ="stylistList" class="col">
               {% for stylist in stylists %}
               <div class="stylist">
-                <button class="form-control accordian">{{stylist.name}}<span class="glyphicon glyphicon-triangle-bottom"></span></button>
+                <button class="infoTop form-control accordian">{{stylist.name}}<span class="glyphicon glyphicon-triangle-bottom"></span></button>
                 <div class="panel">
                   <p>
                       <strong></strong>
@@ -60,8 +59,8 @@
             <h1>Clients of {{stylist.name}}:</h1>
             {% if clients is not empty%}
                 {% for client in clients %}
-                <div class="stylist">
-                    <button class="accordian form-control">{{client.name}} <span class=" glyphicon glyphicon-triangle-bottom"></span></button>
+                <div class="">
+                    <button class="infoTop accordian form-control">{{client.name}} <span class=" glyphicon glyphicon-triangle-bottom"></span></button>
                     <div class="panel">
                         <form class="" action="/stylist/{{stylist.id}}/delete/{{client.id}}" method="post">
                             <p><strong>Last Appointment:</strong> {{client.next_appointment}}   </p>

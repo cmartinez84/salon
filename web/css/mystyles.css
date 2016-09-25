@@ -2,13 +2,17 @@ body{
     /*background: url('/img/background2.jpg') center right no-repeat;
     background-size: contain;
     background-attachment: fixed;*/
-    background-color: 	#008f95;
+    background-color: 	black;
 }
 h1{
     font-family: 'Permanent Marker', cursive;
     text-shadow:  1px 1px 3px black;
     color: white;
     text-shadow: 0px 0px 11px white !important;
+}
+.home-button{
+    font-size: 5em;
+    position: fixed;
 }
 .navbar{
     background: black;
@@ -44,4 +48,7 @@ strong, label{
 }
 div.panel, button.accordian, button.delete{
     margin: 0 auto;
+}
+.outline{
+    border: 7px solid white;
 }
