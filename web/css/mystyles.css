@@ -29,18 +29,12 @@ h1{
 .accordian{
     background: #eb6E80;
     color: white;
-    /*font-size: 1em;*/
 }
 .accordian:hover{
     box-shadow: inset 0px 0px 1px 2px rgba(255, 255, 255, 0.3);
     background: #EB6EC5;
 }
-/*button.delete{
-    background: red;
-    width: 100%;
-    text-transform: uppercase;
-    color: white;
-}*/
+
 button.delete:hover{
 }
 strong, label{
@@ -60,5 +54,4 @@ div.panel, button.accordian, button.delete{
 }
 .rotateIcon{
     transform: rotate(180deg);
-    /*transition: transfor 1s;*/
 }
