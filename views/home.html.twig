@@ -30,7 +30,7 @@
                     <button class="btn btn-danger form-control delete" type="submit" name="button">Delete </button>
                   </form>
                   <button class = "form-control accordian" type="button" name="button">Edit<span class="glyphicon glyphicon-triangle-bottom"></span></button>
-                  <div class="panel">
+                  <div class="panel edit">
                     <form class="" action="/{{stylist.id}}/edit" method="post">
                       <input name="person" type="hidden" value="{{stylist.id}}">
                       <input name="_method" type="hidden" value="patch">

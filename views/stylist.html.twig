@@ -34,7 +34,7 @@
                     <button class="btn btn-danger form-control delete" type="submit" name="button">Delete </button>
                   </form>
                   <button class = "form-control accordian" type="button" name="button">Edit<span class="glyphicon glyphicon-triangle-bottom"></span></button>
-                  <div class="panel">
+                  <div class="panel edit">
                     <form class="" action="/{{stylist.id}}/edit" method="post">
                       <input name="person" type="hidden" value="{{stylist.id}}">
                       <input name="_method" type="hidden" value="patch">
@@ -70,18 +70,17 @@
                         </form>
 
                     <button class="btn accordian form-control" type="button" name="button">Edit <span class=" glyphicon glyphicon-triangle-bottom"></span></button>
-                    <div class="panel">
+                    <div class="panel edit">
                         <form class="" action="/stylist/{{stylist.id}}/edit/" method="post">
-                            <p>Edit Client Info:</p>
                             <input name="person" type="hidden" value="{{client.id}}">
                             <input name="_method" type="hidden" value="patch">
                             <input type="hidden" name="stylist_id" value={{stylist.id}}>
                             <label for="">Change Client Name:</label>
-                            <input type="text" name="name" value="{{client.name}}">
+                            <input class="form-control" type="text" name="name" value="{{client.name}}">
                             <label for="">Change Last Appointment:</label>
-                            <input type="text" name="last_appointment" value="{{client.last_appointment}}">
+                            <input class="form-control" type="text" name="last_appointment" value="{{client.last_appointment}}">
                             <label for="">Change Next Appointment:</label>
-                            <input type="text" name="next_appointment" value="{{client.next_appointment}}">
+                            <input class="form-control" type="text" name="next_appointment" value="{{client.next_appointment}}">
                             <button class="btn btn-success form-control" type="submit" name="button">Submit</button>
                         </form>
                     </div>

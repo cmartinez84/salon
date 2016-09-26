@@ -52,3 +52,9 @@ div.panel, button.accordian, button.delete{
 .outline{
     border: 7px solid white;
 }
+.edit input{
+    background: #fce9eb;
+}
+.edit input:focus{
+    background: white;
+}
