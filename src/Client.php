@@ -44,7 +44,8 @@
         }
 
         function save(){
-            $GLOBALS['DB']->exec("INSERT INTO client (name, last_appointment, next_appointment, stylist_id) VALUES ('{$this->name}',
+            $GLOBALS['DB']->exec("INSERT INTO client (name, last_appointment, next_appointment, stylist_id) VALUES (
+                '{$this->name}',
                 '{$this->last_appointment}',
                 '{$this->next_appointment}',
                 '{$this->stylist_id}'

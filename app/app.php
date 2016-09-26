@@ -27,7 +27,8 @@
     });
 
     $app->post("/", function() use ($app) {
-        $new_Stylist = new Stylist($_POST['name'], $_POST['date_began'], $_POST['specialty']);
+        $new_Stylist = new Stylist(null, $_POST['name'], $_POST['date_began'], $_POST['specialty']);
+        var_dump ($new_Stylist);
         $new_Stylist->save();
       return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
     });

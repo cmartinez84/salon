@@ -58,3 +58,7 @@ div.panel, button.accordian, button.delete{
 .edit input:focus{
     background: white;
 }
+.rotateIcon{
+    transform: rotate(180deg);
+    /*transition: transfor 1s;*/
+}
