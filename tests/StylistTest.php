@@ -89,17 +89,17 @@
             $this->assertEquals(false, $result);
         }
         function testGetClients(){
-            $test_stylist1 = new Stylist(333, "alexandra", "11-11-2011", "children");
-            $test_stylist1->save();
-            $test_stylist2 = new Stylist(null, "bob", "11-22-3333", "burgers");
-            $test_stylist2->save();
-            $test_client = new Client(null, "bob", "1-11-2111", "2-22-2122", 333);
+            $test_stylist = new Stylist(null, "alexandra", "11-11-2011", "children");
+            $test_stylist->save();
+            $test_stylist_id = $test_stylist->getId();
+
+            $test_client = new Client(null, "bob", "1-11-2111", "2-22-2122", $test_stylist_id);
             $test_client->save();
 
-            $test_found_clients = $test_stylist1->getClients(333);
-            $result = $test_found_clients[0];
+            $result = $test_stylist->getClients();
 
-            $this->assertEquals($test_client, $result);
+
+            $this->assertEquals([$test_client], $result);
         }
         function testDelete(){
             $test_stylist1 = new Stylist(null, "alexandra", "11-11-2011", "children");
