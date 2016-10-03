@@ -23,16 +23,16 @@
         function setName($new_name){
             $this->name = $new_name;
         }
-        function getNext_appointment(){
+        function getNextAppointment(){
             return $this->next_appointment;
         }
-        function setLast_appointment($last_appointment){
+        function setLastAppointment($new_last_appointment){
             $this->last_appointment = $new_last_appointment;
         }
-        function getLast_appointment(){
-            return $this->next_appointment;
+        function getLastAppointment(){
+            return $this->last_appointment;
         }
-        function setNext_appointment($next_appointment){
+        function setNextAppointment($next_appointment){
             $this->next_appointment = $new_next_appointment;
         }
         function getStylistId()
@@ -44,7 +44,7 @@
         }
 
         function save(){
-            $GLOBALS['DB']->exec("INSERT INTO client (name, last_appointment, next_appointment, stylist_id) VALUES (
+            $GLOBALS['DB']->exec("INSERT INTO clients (name, last_appointment, next_appointment, stylist_id) VALUES (
                 '{$this->name}',
                 '{$this->last_appointment}',
                 '{$this->next_appointment}',
@@ -53,10 +53,10 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
         function delete(){
-            $GLOBALS['DB']->exec("DELETE FROM client where ID ={$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM clients where ID ={$this->getId()};");
         }
         function update($new_name, $last_appointment, $next_appointment){
-            $GLOBALS['DB']->exec("UPDATE client SET
+            $GLOBALS['DB']->exec("UPDATE clients SET
                 name = '$new_name',
                 last_appointment = '$last_appointment',
                 next_appointment ='$next_appointment'
@@ -65,7 +65,7 @@
         }
 
         static function getAll(){
-            $returned_clients =$GLOBALS['DB']->query("SELECT * FROM client;");
+            $returned_clients =$GLOBALS['DB']->query("SELECT * FROM clients;");
             $all_clients = array();
             foreach ($returned_clients as $client) {
                 $id = $client['id'];
@@ -79,7 +79,7 @@
             return $all_clients;
         }
         static function deleteAll(){
-            $GLOBALS['DB']->exec("DELETE FROM client;");
+            $GLOBALS['DB']->exec("DELETE FROM clients;");
         }
         static function find($search_id){
 
@@ -92,8 +92,5 @@
             }
             return $found_client;
         }
-
-
     }
-
  ?>

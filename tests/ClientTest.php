@@ -7,7 +7,7 @@
 
     require_once "src/Client.php";
 
-    $server = 'mysql:host=localhost:8889;dbname=stylists_test';
+    $server = 'mysql:host=localhost:8889;dbname=hair_salon';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -19,54 +19,54 @@
             Client::deleteAll();
         }
 
-        function test_getName()
+        function testGetName()
         {
             //Arrange
-            $id = 33;
-            $name = "bob";
-            $last_appointment = "11-14-2011";
-            $next_appointment = "11-11-3011";
-            $stylist_id = 10;
-            $test_client= new Client($id, $name, $last_appointment, $next_appointment, 10);
+            $test_id = 33;
+            $test_name = "bob";
+            $test_last_appointment = "11-14-2011";
+            $test_next_appointment = "11-11-3011";
+            $test_stylist_id = 10;
+            $test_client= new Client($test_id, $test_name, $test_last_appointment, $test_next_appointment, 10);
             //Act
             $result = $test_client->getName();
             //Assert
-            $this->assertEquals($name, $result);
+            $this->assertEquals($test_name, $result);
         }
 
-        function test_getId(){
+        function testGetId(){
             $test_client = new Client(null, "bob", "1-11-2111", "2-22-2122", 10);
             $test_client->save();
 
 
-            $client_id = $test_client->getId();
-            $result = is_numeric($client_id);
+            $test_client_id = $test_client->getId();
+            $result = is_numeric($test_client_id);
             // var_dump($test_client);
             $this->assertEquals(true, $result);
         }
-        function test_save(){
+        function testSave(){
             $test_client = new Client(null, "bob", "1-11-2111", "2-22-2122", 10);
             $test_client->save();
 
-            $all_clients = Client::getAll();
-            $result = $all_clients[0];
+            $test_all_clients = Client::getAll();
+            $result = $test_all_clients[0];
             // var_dump($test_client);
 
             $this->assertEquals($test_client, $result);
         }
-        function test_find(){
+        function testFind(){
             $test_client = new Client(null, "bob", "1-11-2111", "2-22-2122", 10);
             $test_client2 = new Client(null, "bob", "1-11-2111", "2-22-2122", 10);
             $test_client->save();
             $test_client2->save();
-            $search_id = $test_client2->getId();
+            $test_search_id = $test_client2->getId();
 
-            $result = Client::find($search_id);
+            $result = Client::find($test_search_id);
 
             $this->assertEquals($test_client2, $result);
 
         }
-        function test_delete(){
+        function testDelete(){
             $test_client = new Client(null, "bob", "1-11-2111", "2-22-2122", 10);
             $test_client2 = new Client(null, "bob", "1-11-2111", "2-22-2122", 10);
             $test_client->save();
@@ -78,19 +78,28 @@
             $this->assertEquals([$test_client2], $result);
 
         }
-        function test_update(){
+        function testUpdate(){
             $test_client = new Client(null, "bob", "1-11-2111", "2-22-2122", 10);
             $test_client->save();
             $test_client_id = $test_client->getId();
-            $new_name = "barbara";
-            $new_last_apppointment = "5-5-55";
-            $new_next_appointment = "9-9-99";
+            $test_new_name = "barbara";
+            $test_new_last_apppointment = "5-5-55";
+            $test_new_next_appointment = "9-9-99";
 
-            $test_client->update($new_name, $new_last_apppointment,  $new_next_appointment);
-            $altered_client = Client::find($test_client_id);
-            $altered_name = $altered_client->getName();
+            $test_client->update($test_new_name, $test_new_last_apppointment,  $test_new_next_appointment);
+            $test_altered_client = Client::find($test_client_id);
+            if(($test_altered_client->getName() == $test_new_name)
+            && ($test_altered_client->getLastAppointment() == $test_new_last_apppointment)
+            && ($test_altered_client->getNextAppointment() == $test_new_next_appointment))
+            {
+                $result = true;
+            }
+            else
+            {
+                $result = false;
+            }
 
-            $this->assertEquals($new_name, $altered_name);
+            $this->assertEquals(true, $result);
         }
     }
 ?>

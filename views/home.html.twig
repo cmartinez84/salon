@@ -6,73 +6,69 @@
   </head>
   <body>
     <div class="container">
-        <div class=" col-sm-4">
-            <h1>Our Stylists</h1>
-            {% if stylists is not empty%}
-            <div id ="stylistList" class="col">
-              {% for stylist in stylists %}
-              <div class="stylist">
-                <button class="infoTop form-control accordian">{{stylist.name}}<span class="glyphicon glyphicon-triangle-bottom"></span></button>
-                <div class="panel">
-                  <p>
-                      <strong></strong>
-                      <a href="/stylist/{{stylist.id}}">
-                          <button  class=" form-control btn btn-info" type="button" name="button">Clients <span class=" glyphicon glyphicon-triangle-right"></span></button>
-
-                      </a>
-                  </p>
-                  <p><strong>Began With Company:</strong> {{stylist.date_began}}</p>
-                  <p><strong>Specialty:</strong> {{stylist.specialty}}</p>
-                  <form class="delete" action="/delete/{{stylist.id}}" method="post">
-                    <input name="_method" type="hidden" value="delete">
-                    <button class="btn btn-danger form-control delete" type="submit" name="button">Delete </button>
-                  </form>
-                  <button class = "form-control accordian" type="button" name="button">Edit<span class="glyphicon glyphicon-triangle-bottom"></span></button>
-                  <div class="panel edit">
-                    <form class="" action="/{{stylist.id}}/edit" method="post">
-                      <input name="person" type="hidden" value="{{stylist.id}}">
-                      <input name="_method" type="hidden" value="patch">
-                      <input class="form-control" type="hidden" name="stylist_id" value={{stylist.id}}>
-                      <div><label for="">Name</label>
-                      <input class="form-control" type="text" name="name" value="{{stylist.name}}"></div>
-                      <div><label for="">Began:</label>
-                      <input class="form-control" type="text" name="date_began" value="{{stylist.date_began}}"></div>
-                      <div><label for="">Specialty:</label>
-                      <input class="form-control" type="text" name="specialty" value="{{stylist.specialty}}"></div>
-                      <button class="form-control btn btn-success" type="submit" name="button">Submit</button>
-                    </form>
+      <div class=" col-sm-4">
+        <h1>Our Stylists</h1>
+        {% if stylists is not empty%}
+        <div id ="stylistList" class="col">
+          {% for stylist in stylists %}
+          <div class="stylist">
+            <button class="infoTop form-control accordian">{{stylist.name}}<span class="glyphicon glyphicon-triangle-bottom"></span></button>
+            <div class="panel">
+              <p>
+                <strong></strong>
+                <a href="/stylist/{{stylist.id}}">
+                <button  class=" form-control btn btn-info" type="button" name="button">Clients <span class=" glyphicon glyphicon-triangle-right"></span></button>
+                </a>
+              </p>
+              <p><strong>Began With Company:</strong> {{stylist.getDateBegan}}</p>
+              <p><strong>Specialty:</strong> {{stylist.specialty}}</p>
+              <form class="delete" action="/delete/{{stylist.id}}" method="post">
+                <input name="_method" type="hidden" value="delete">
+                <button class="btn btn-danger form-control delete" type="submit" name="button">Delete </button>
+              </form>
+              <button class = "form-control accordian" type="button" name="button">Edit<span class="glyphicon glyphicon-triangle-bottom"></span></button>
+              <div class="panel edit">
+                <form class="" action="/{{stylist.id}}/edit" method="post">
+                  <input name="person" type="hidden" value="{{stylist.id}}">
+                  <input name="_method" type="hidden" value="patch">
+                  <input class="form-control" type="hidden" name="stylist_id" value={{stylist.id}}>
+                  <div><label for="">Name</label>
+                    <input class="form-control" type="text" name="name" value="{{stylist.name}}">
                   </div>
-                </div>
+                  <div><label for="">Began:</label>
+                    <input class="form-control" type="text" name="date_began" value="{{stylist.getDateBegan}}">
+                  </div>
+                  <div><label for="">Specialty:</label>
+                    <input class="form-control" type="text" name="specialty" value="{{stylist.specialty}}">
+                  </div>
+                  <button class="form-control btn btn-success" type="submit" name="button">Submit</button>
+                </form>
               </div>
-              {% endfor %}
             </div>
-            {% endif %}
-
+          </div>
+          {% endfor %}
         </div>
-        <!-- <div class="col-sm-4">
-        </div> -->
+        {% endif %}
+      </div>
 
-        <div class="newStylistColumn col-sm-4">
-            <h1>New Stylist</h1>
-            <form class="" action="/" method="post">
-                <div class="form-group">
-                    <label for="">Enter A New Stylist:</label>
-                    <input class="form-control" type="text" name="name" value="">
-                </div>
-                <div class="form-group">
-                    <label for="">Date Began:</label>
-                    <input class="form-control" type="text" name="date_began" value="">
-                </div>
-
-                <div class="form-group">
-                    <label for="">Specialty:</label>
-                    <input class="form-control" type="text" name="specialty" value="">
-                </div>
-
-              <button class="btn btn-success form-control" type="submit" name="button">Submit</button>
-            </form>
-        </div>
-
+      <div class="newStylistColumn col-sm-4">
+        <h1>New Stylist</h1>
+        <form class="" action="/" method="post">
+          <div class="form-group">
+            <label for="">Enter A New Stylist:</label>
+            <input class="form-control" type="text" name="name" value="">
+          </div>
+          <div class="form-group">
+            <label for="">Date Began:</label>
+            <input class="form-control" type="text" name="date_began" value="">
+          </div>
+          <div class="form-group">
+            <label for="">Specialty:</label>
+            <input class="form-control" type="text" name="specialty" value="">
+          </div>
+          <button class="btn btn-success form-control" type="submit" name="button">Submit</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>

@@ -22,10 +22,10 @@
         function setName($new_name){
             $this->name = $new_name;
         }
-        function getDate_began(){
+        function getDateBegan(){
             return $this->date_began;
         }
-        function setDate_began($new_date_began){
+        function setDateBegan($new_date_began){
             $this->date_began = $new_date_began;
         }
         function getSpecialty(){
@@ -35,7 +35,7 @@
             $this->specialty = $new_specialty;
         }
         function save(){
-            $GLOBALS['DB']->exec("INSERT INTO stylist (name, date_began, specialty) VALUES (
+            $GLOBALS['DB']->exec("INSERT INTO stylists (name, date_began, specialty) VALUES (
                 '{$this->name}',
                 '{$this->date_began}',
                 '{$this->specialty}'
@@ -43,7 +43,7 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
         function delete(){
-            $GLOBALS['DB']->exec("DELETE FROM stylist WHERE id={$this->getid()};");
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id={$this->getid()};");
         }
         function getClients($search_id){
             $all_clients = Client::getAll();
@@ -68,7 +68,7 @@
             return $found_stylist;
         }
         static function getAll(){
-            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylist");
+            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists");
             $stylists= array();
             foreach ($returned_stylists as $stylist) {
                 $id = $stylist['id'];
@@ -81,15 +81,14 @@
             return $stylists;
         }
         static function deleteAll(){
-            $GLOBALS['DB']->exec("DELETE FROM stylist;");
+            $GLOBALS['DB']->exec("DELETE FROM stylists;");
         }
         function update($name, $date_began, $specialty){
-            $GLOBALS['DB']->exec("UPDATE stylist SET
+            $GLOBALS['DB']->exec("UPDATE stylists SET
                 name ='$name',
                 date_began = '$date_began',
                 specialty = '$specialty'
                 WHERE id ='{$this->getId()}';");
         }
-
     }
 ?>

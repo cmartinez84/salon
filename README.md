@@ -1,11 +1,11 @@
-# _Salon
+# _Hair_Salon
 
-#### _A web page which suggests which coding track to take based on user inputs, September 15, 2016_
+#### _A website to manage client-stylist relations for a hair salon_
 
 #### By _**Chris Martinez**_
 
 ## Description
-_This page will search for word frequency._
+_This app allows the user to enter, edit, and delete stylist information and clients for the stylist. This project explores one-to-many relationships, as each client will only belong to one client, and is a practice in CRUD functionality._
 
 
 ## Specifications
@@ -30,18 +30,18 @@ _This page will search for word frequency._
  * _Begin MAMP_
 * _Iinitialize new Database by doing the following:_
 * _Begin MySql Shell by running $ /Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot_
-* _CREATE DATABASE stylists_
-* _USE stylists_
-* _CREATE TABLE stylist(id serial PRIMARY KEY, name VARCHAR(255), date_began VARCHAR(255), specialty VARCHAR(255))_
-* _CREATE TABLE client(id, serial PRIMARY KEY, name VARCHAR(255), last_appointment VARCHAR(255), next_appointment VARCHAR(255))_
+* _CREATE DATABASE hair_salon_
+* _USE hair_salong_
+* _CREATE TABLE stylists(id serial PRIMARY KEY, name VARCHAR(255), date_began VARCHAR(255), specialty VARCHAR(255))_
+* _CREATE TABLE clients(id, serial PRIMARY KEY, name VARCHAR(255), last_appointment VARCHAR(255), next_appointment VARCHAR(255))_
 * _Alternatively, unzip the database contained at the top level of this folder and import from phpmyadmin (http://localhost:8888/phpmyadmin/)_
-* _in phpmyadmin, you may have also create another database for use with phpunit tests files by going to Operations> Copy Database To> and remaning database "stylists_test" and chooosing "structure only"_
+* _in phpmyadmin, you may also  have to create another database for use with phpunit tests files by going to Operations> Copy Database To> and remaning database "hair_salon_test" and choosing "structure only"_
 
 * _Change localhost routing in app.php (and php documents in tests folder) to localhost enabled for mySQL. ex mysql:...host=localhost:8889;dbname=....in MAMP, you can find this by going to  MAMP > Preferences > Ports> MySql Port_
 * _In terminal, navigate to _
 * _Open Browser and navigate to http://localhost:8000_
 ## Link
-https://github.com/cmartinez84/string-word-search
+https://github.com/cmartinez84/hair_salon
 
 ## Known Bugs
 _None yet_
